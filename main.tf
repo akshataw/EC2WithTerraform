@@ -7,6 +7,7 @@ resource "aws_instance" "akshataEC2" {
     instance_type = "t2.micro"
     key_name = "akshata"
     vpc_security_group_ids = [aws_security_group.akshata-sg.id]
+    
     tags = {
         Name = "akshataEC2"
     }
@@ -17,6 +18,7 @@ resource "aws_instance" "awEC2" {
     instance_type = "t2.micro"
     key_name = "akshata"
     vpc_security_group_ids = [aws_security_group.akshata-sg.id]
+    
     tags = {
         Name = "awEC2"
     }
@@ -91,6 +93,7 @@ resource "aws_lb" "akshata-lb" {
     subnets = [var.subnet1, var.subnet2]
     security_groups = [aws_security_group.akshata-lb-sg.id]
     idle_timeout = 400
+    
     tags = {
         Name = "akshata-elb"
     }
@@ -101,9 +104,11 @@ resource "aws_lb_target_group" "akshata-tg" {
     port = 80
     protocol = "HTTP"
     vpc_id = var.vpc
+    
     tags = {
         Name = "akshata-tg"
     }
+    
     health_check {
         healthy_threshold = 2
         unhealthy_threshold = 2
@@ -130,6 +135,7 @@ resource "aws_lb_listener" "akshata-listener" {
     load_balancer_arn = aws_lb.akshata-lb.arn
     port = 80
     protocol = "HTTP"
+    
     default_action {
         target_group_arn = aws_lb_target_group.akshata-tg.id
         type = "forward"
