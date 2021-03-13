@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "akshataEC2" {
-    ami = "ami-078af5745f1d9ccc6"
+    ami = var.ami
     instance_type = "t2.micro"
     key_name = "akshata"
     vpc_security_group_ids = [aws_security_group.akshata-sg.id]

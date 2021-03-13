@@ -1,6 +1,6 @@
 # EC2 with Terraform
 
-![](https://github.com/akshataw/EC2WithTerraform/images/terraform.png?raw=true)
+![](https://github.com/akshataw/EC2WithTerraform/blob/main/terraform.png?raw=true)
 
 Terraform is an open-source infrastructure as code software tool created by HashiCorp.
 
